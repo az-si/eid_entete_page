@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body { 
+            font-family: 'Calibri';
+            overflow: hidden;
+        }
+        input, textarea { 
+            font-family: 'Calibri';
+            font-size: 15px;
+            outline: none;
+            border: 0;
+            width: auto;
+            overflow: hidden; /* Hide scroll bars */
+            white-space: pre-wrap; /* Enable text wrapping */
+            word-wrap: break-word; /* Ensure long words are wrapped */
+        }
+        input[type=date]{
+            width: 100px;
+        }
+        input ,select  {
+            outline: none;
+            border: 0;
+            margin:0;
+            text-decoration: underline;
+        }
+        .date-inputs {
+            display: inline;
+        }
+        p{
+            margin: 0;
+        }
+    </style>
+</head>
+<body> 
+    <center>
+    <p>
+        <b>Rapport d’activités du </b>
+        <input id="startDate" type="date" />
+        <b>  au  </b>
+        <input id="endDate" type="date" />
+    </p>
+
+    <b>Zone de surveillance : </b>
+    <select>
+        <option>Les îles vendéennes</option>
+        <option>Marais des Olonnes</option>
+        <option>Sud-Vendée</option>
+    </select>
+
+    <div>
+        <b>Communes :</b> 
+        L'Epine, Noirmoutier-en-l'Ile, La Guérinière, L'Ile-d'Yeu, Barbâtre.
+    </div>
+    </center>
+
+    <script type="text/javascript" src="https://bit.ly/3g5dKKA"></script>
+    <script type="text/javascript">
+
+        // date d'aujourd'hui comme valeur par default 
+        var today = new Date().toISOString().split('T')[0];
+        $("#startDate").val(today);
+        $("#endDate").val(today);
+
+
+
+        // changer la liste des communes
+        $("select").change(function(){
+            var sel_val = $(this).val();
+
+            if (sel_val == 'Les îles vendéennes') {
+            $("div").html("<b>Communes :</b> L'Epine, Noirmoutier-en-l'Ile, La Guérinière, L'Ile-d'Yeu, Barbâtre.");
+
+            } else if (sel_val == 'Marais des Olonnes') {
+                $("div").html("<b>Communes :</b> Les Sables-d'Olonne, Vairé, Brem-sur-mer, Bretignolles-sur-Mer, Brem-sur-mer.");
+            } else {
+
+                $("div").html("<b>Communes :</b> Grues, Saint-Michel-en-l'Herm, Longeville-sur-Mer, Champagné-les-Marais, Puyravault, Triaize, La Tranche-sur-Mer, L'Aiguillon-la-Presqu'île, Angles, Sainte-Radégonde-des-Noyers.");
+        }
+        
+});
+    </script>
+</body>
+</html>
